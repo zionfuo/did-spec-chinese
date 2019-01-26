@@ -35,6 +35,8 @@ Ryan Grant
 
 [Pull requests](https://github.com/w3c-ccg/did-spec/pulls/)
 
-## 中文版译者
+## 中文版
 
-庄七
+翻译：庄七
+
+校对：
