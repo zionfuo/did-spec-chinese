@@ -174,9 +174,7 @@ The JSON-LD specification enables the layering of data semantics on top of JSON 
 
 全局唯一分散标识符的概念并不是什么新概念；[全局唯一标识符(Universally Unique Identifiers,UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier)最初是在20世纪80年代开发的，后来成为开放软件基金会 [分布式计算环境（Distributed Computing Environment）](https://en.wikipedia.org/wiki/Distributed_Computing_Environment)的标准特性。UUID在没有集中注册中心服务的情况下实现全局唯一性，它使用了一种算法，该算法产生128位（128-bit）的值，并且具有足够的熵，以至于发生碰撞的几率非常小。UUID在RFC4122中被正式指定为统一资源名称(URN)的特定类型。
 
-DID类似于UUID，除了：
-（a）像URL一样，它可以被解析或解引用到描述该实体的标准资源（参见第4部分文档）
-（b）与URL不同，DID文档通常包含加密材料，该加密材料允许对与DID相关联的实体进行认证。
+DID类似于UUID，除了：（a）像URL一样，它可以被解析或解引用到描述该实体的标准资源（参见第4部分文档），（b）与URL不同，DID文档通常包含加密材料，该加密材料允许对与DID相关联的实体进行认证。
 
 ## The Generic DID Scheme
 The generic DID scheme is a URI scheme conformant with [[RFC3986]]. It consists of a DID followed by an optional path and/or fragment. The term DID refers only to the identifier conforming to the did rule in the ABNF below; when used alone, it does not include a path or fragment. A DID that may optionally include a path and/or fragment is called a DID reference.
