@@ -49,7 +49,17 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 There are of course many use cases where it is desirable to discover a DID when starting from a human-friendly identifier—a natural language name, a domain name, or a conventional address for a DID controller such as a mobile telephone number, email address, Twitter handle, or blog URL. However, the problem of mapping human-friendly identifiers to DIDs (and doing so in a way that can be verified and trusted) is out-of-scope for this specification.
 
+当然，有很多用例，当从一个人友好的标识符 —— 一个自然的语言名称、一个域名，或者一个移动电话号码、电子邮件地址、Twitter句柄或博客URL——的常规地址开始时，就可以发现一个这样的例子。然而，将人类友好的标识符映射到DIDs（并以一种可以被验证和信任的方式进行映射）的问题是该规范的不适用范围。
+
+
 Solutions to this problem (and there are many) should be defined in separate specifications that reference this specification. It is strongly recommended that such specifications carefully consider: (a) the numerous security attacks based on deceiving users about the true human-friendly identifier for a target entity, and (b) the privacy consequences of using human-friendly identifiers that are inherently correlatable, especially if they are globally unique.
+
+这个问题的解决方案（还有很多）应该在引用该规范的单独规范中定义。强烈建议这样的规范仔细考虑：（a）基于欺骗用户的针对目标实体的真正的人类友好标识符的大量安全攻击，以及（b）使用具有人类友好的标识符的隐私后果，特别是如果它们是全局唯一的。
+
+
+
+
+
 
 ## Purpose of This Specification
 

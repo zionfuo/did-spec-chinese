@@ -2,6 +2,12 @@
 
 [中文](https://github.com/zionfuo/did-spec-chinese/blob/master/did-spec-sc.md) | [English](https://github.com/zionfuo/did-spec-chinese/blob/master/did-spec.md)
 
+## 中文版
+
+翻译：庄七
+
+校对：
+
 ## Latest editor's draft:
 
 [https://w3c-ccg.github.io/did-spec/](https://w3c-ccg.github.io/did-spec/)
@@ -34,9 +40,3 @@ Ryan Grant
 [Commit history](https://github.com/w3c-ccg/did-spec/commits/gh-pages)
 
 [Pull requests](https://github.com/w3c-ccg/did-spec/pulls/)
-
-## 中文版
-
-翻译：庄七
-
-校对：
