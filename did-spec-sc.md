@@ -57,7 +57,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 从概念上讲，该规范与DID方法规范的关系类似于IETF通用URI规范（RFC3986）和特定的URI方案（iana-uri-scheme（如http:https:RFC7230中指定的方案）的关系。它也类似于IETF的通用URN规范（URN）和特定的URN名称空间定义（例如RFC4122中定义的UUID URN名称空间）的关系。不同之处在于，除了定义一个特定的DID方案之外，一个DID方法规范还必须指定读取、写入和撤销所写的网络上的记录的方法。
 
-有关DID方法及其相应规范的列表, 请参阅[DID方法注册表](https://w3c-ccg.github.io/did-method-registry/)。
+有关DID方法及其相应规范的列表, 请参阅[DID方法注册表（DID-METHOD-REGISTRY）](https://w3c-ccg.github.io/did-method-registry/)。
 
 ## 1.2 设计目标
 
@@ -81,6 +81,8 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 这是DID的一个简单示例：
 
 ```
+EXAMPLE 1: A simple example of a Decentralized Identifier (DID)
+
 did:example:123456789abcdefghi
 ```
 
@@ -89,6 +91,8 @@ did:example:123456789abcdefghi
 以下是描述上述DID的DID文档的示例。此示例假定控制此标识符的私钥的实体对DID文档具有权威性。
 
 ```
+EXAMPLE 2: Minimal self-managed DID Document
+
 {
   "@context": "https://w3id.org/did/v1",
   "id": "did:example:123456789abcdefghi",
@@ -775,9 +779,9 @@ There are multiple registries that define DID Methods and extensions to this spe
 | [DID Method Registry](https://w3c-ccg.github.io/did-method-registry/) | Defines all known DID Methods and contains links to their specifications. |
 | [Linked Data Cryptography Suite Registry](https://w3c-ccg.github.io/ld-cryptosuite-registry/) | Defines all known Linked Data Cryptography Suites and Key Formats. |
 
-# Real World Example
+# B. 实例研究
 
-A future-facing real-world context is provided below:
+下面提供了面向未来的真实环境:
 
 ```
 {
@@ -844,3 +848,75 @@ A future-facing real-world context is provided below:
   }]
 }
 ```
+
+# C. 参考
+
+## C.1 参考文献
+
+**[DID-METHOD-REGISTRY]**
+
+The Decentralized Identifier Method Registry. Manu Sporny; Drummond Reed. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-ccg.github.io/did-method-registry/
+
+**[IANA-URI-SCHEMES]**
+
+Uniform Resource Identifier (URI) Schemes. IANA. URL: https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
+
+**[JSON]**
+
+The application/json Media Type for JavaScript Object Notation (JSON). D. Crockford. IETF. July 2006. Informational. URL: https://tools.ietf.org/html/rfc4627
+
+**[JSON-LD]**
+
+JSON-LD 1.0. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: https://www.w3.org/TR/json-ld/
+
+**[LD-PROOFS]**
+
+Linked Data Proofs. Manu Sporny; Dave Longley. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-dvcg.github.io/ld-proofs/
+
+**[LD-SIGNATURES]**
+
+Linked Data Signatures. Manu Sporny; Dave Longley. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-dvcg.github.io/ld-signatures/
+
+**[LINKED-DATA]**
+
+Linked Data Design Issues. Tim Berners-Lee. W3C. 27 July 2006. W3C-Internal Document. URL: https://www.w3.org/DesignIssues/LinkedData.html
+
+**[RFC3552]**
+
+Guidelines for Writing RFC Text on Security Considerations. E. Rescorla; B. Korver. IETF. July 2003. Best Current Practice. URL: https://tools.ietf.org/html/rfc3552
+
+**[RFC4122]**
+
+A Universally Unique IDentifier (UUID) URN Namespace. P. Leach; M. Mealling; R. Salz. IETF. July 2005. Proposed Standard. URL: https://tools.ietf.org/html/rfc4122
+
+**[RFC5234]**
+
+Augmented BNF for Syntax Specifications: ABNF. D. Crocker, Ed.; P. Overell. IETF. January 2008. Internet Standard. URL: https://tools.ietf.org/html/rfc5234
+
+**[RFC6973]**
+
+Privacy Considerations for Internet Protocols. A. Cooper; H. Tschofenig; B. Aboba; J. Peterson; J. Morris; M. Hansen; R. Smith. IETF. July 2013. Informational. URL: https://tools.ietf.org/html/rfc6973
+
+**[RFC7159]**
+
+The JavaScript Object Notation (JSON) Data Interchange Format. T. Bray, Ed.. IETF. March 2014. Proposed Standard. URL: https://tools.ietf.org/html/rfc7159
+
+**[RFC7230]**
+
+Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing. R. Fielding, Ed.; J. Reschke, Ed.. IETF. June 2014. Proposed Standard. URL: https://tools.ietf.org/html/rfc7230
+
+**[URI]**
+
+Uniform Resource Identifier (URI): Generic Syntax. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January 2005. Internet Standard. URL: https://tools.ietf.org/html/rfc3986
+
+**[URL]**
+
+URL Standard. Anne van Kesteren. WHATWG. Living Standard. URL: https://url.spec.whatwg.org/
+
+**[URN]**
+
+URN Syntax. R. Moats. IETF. May 1997. Proposed Standard. URL: https://tools.ietf.org/html/rfc2141
+
+**[XMLSCHEMA11-2]**
+
+W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al. W3C. 5 April 2012. W3C Recommendation. URL: https://www.w3.org/TR/xmlschema11-2/
