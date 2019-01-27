@@ -3,15 +3,17 @@
 
 # 摘要
 
-分散标识符（DIDs）是一种新的标识符，他用于可验证的“自主”数字身份。DIDs完全处于已完成的主体的控制之下，独立于任何集中式注册中心、身份提供者或证书颁发机构。DIDs是将一个已完成的主题与该主题的可靠交互联系起来的url。DIDs决心做文档——简单的文档描述如何使用特定的文档。每个文档都包含至少三样东西：加密材料、身份验证套件和服务端点。与身份验证套件相结合的加密材料提供了一组机制来进行身份验证（例如，公钥、匿名生物特征协议等）。服务端点支持与DID主题的可信交互。
+分散标识符（DIDs）是一种新的标识符，他用于可验证的“自主（self-sovereign）”数字身份。DIDs完全处于已完成的主体的控制之下，独立于任何集中式注册中心、身份提供者或证书颁发机构。DIDs是将一个已完成的主题与该主题的可靠交互联系起来的url。DIDs决心做文档——简单的文档描述如何使用特定的文档。每个文档都包含至少三样东西：加密材料、身份验证套件和服务端点。与身份验证套件相结合的加密材料提供了一组机制来进行身份验证（例如，公钥、匿名生物特征协议等）。服务端点支持与DID主题的可信交互。
 
 该文档指定了所有DIDs支持的公共数据模型、格式和操作。
+
+推荐阅读：[自主身份 | Linux中国](https://linux.cn/article-7652-1.html)
 
 # 1 介绍
 
 ## 1.1 概况
 
-传统的[身份管理](https://en.wikipedia.org/wiki/Identity_management)系统是基于集中的权威，例如公司[目录服务](https://en.wikipedia.org/wiki/Directory_service)、[证书颁发机构](https://en.wikipedia.org/wiki/Certificate_authority)或[域名注册中心](https://en.wikipedia.org/wiki/Domain_name_registry)。从密码信任验证的角度来看，每一个中央集权的权威都是其自身的[信任根源](https://en.wikipedia.org/wiki/Trust_anchor)。要使跨这些系统的身份管理工作需要实现[联合身份管理](https://en.wikipedia.org/wiki/Federated_identity)。
+传统的[身份管理（identity management）](https://en.wikipedia.org/wiki/Identity_management)系统是基于集中的权威，例如[公司目录服务（directory services）](https://en.wikipedia.org/wiki/Directory_service)、[证书颁发机构（certificate authorities）](https://en.wikipedia.org/wiki/Certificate_authority)或[域名注册中心（domain name registries）](https://en.wikipedia.org/wiki/Domain_name_registry)。从密码信任验证的角度来看，每一个中央集权的权威都是其自身的[信任根源](https://en.wikipedia.org/wiki/Trust_anchor)。要使跨这些系统的身份管理工作需要实现[联合身份管理](https://en.wikipedia.org/wiki/Federated_identity)。
 
 分布式记账技术（DLT）的出现，有时被称为区块链技术，提供了完全去中心化的身份管理的机会。在一个分散的身份系统中，实体可以自由地使用任何共享的信任根。全球分布式的分类账（或提供类似功能的分散式P2P网络）提供了一种管理信任根的方法，既没有中央集权，也没有单点故障。同时，DLTs和分散式身份识别系统使任何实体能够在任意数量的分布式独立的信任基础上创建和管理自己的标识符。
 
@@ -25,9 +27,7 @@
 
 ### 1.1.1 URIs、URLs和URNs
 
-DIDs have a foundation in URLs, so it's important to understand how the W3C [clarified](https://www.w3.org/TR/uri-clarification/) the terms [[URI]] (Uniform Resource Identifier), [[URL]] (Uniform Resource Locator), and [[URN]] (Uniform Resource Name) in September 2001\. The key difference between these three categories of identifiers are:
-
-DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9月[澄清](https://www.w3.org/TR/uri-clarification/)了URI(统一资源标识符)、URL(统一资源定位器)和URN(统一资源名称)等术语。这三类标识符的主要区别是:
+DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9月[澄清](https://www.w3.org/TR/uri-clarification/)了URI(Uniform Resource Identifier 统一资源标识符)、URL(Uniform Resource Locator 统一资源定位器)和URN(Uniform Resource Name 统一资源名称)等术语。这三类标识符的主要区别是:
 
 1. **URI**是识别抽象或物理资源的任何类型标识符（例如，URN、URL等）的术语。它可能是资源，也可能不是资源。
 2. **URL**是任何类型的URI的术语，可以解析或取消引用，以定位Web上资源的表示（例如，Web页面、文件、图像等）。
@@ -35,12 +35,23 @@ DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年
 
 推荐阅读：[分清 URI、URL 和 URN | IBM](https://www.ibm.com/developerworks/cn/xml/x-urlni.html)
 
-## Motivations for DIDs
+## 1.1.2 DID缘起
 
-The growing need for decentralized identifiers has produced two specific requirements for a new type of URL that still fits Web Architecture and has a few additional requirements that more traditional URLs, like HTTP-based URLs, do not have:
+对分散标识符的需求不断增长，这对一种新类型的URL产生了两个具体的要求，这些新类型的URL仍然适合Web架构，并且有一些额外的要求，而这些要求是更传统的URL（例如基于HTTP的URL）所不具备的:
 
 1.  The new type of URL SHOULD NOT require a centralized authority to register, resolve, update, or revoke the identifier. The overwhelming majority of URIs today are based on DNS names or IP addresses that depend on centralized authorities for registration and ultimate control. DIDs can be created and managed without any such authority.
 2.  A URL whose control and associated metadata, including public keys, can be cryptographically verified. Authentication via DIDs and DID Documents leverage the same public/private key cryptography as distributed ledgers.
+
+新类型的URL不应该要求集中的权限来注册、解析、更新或撤销标识符。今天绝大多数的uri都基于DNS名称或IP地址，这些IP地址依赖于集中管理的注册和最终控制。可以在没有任何此类权限的情况下创建和管理DIDs。
+
+一个URL，它的控制和相关的元数据，包括公共密钥，可以被加密验证。通过DIDs进行身份验证，并使文档利用与分布式账本相同的公钥/私钥加密。
+
+
+1.  The new type of URL SHOULD NOT require a centralized authority to register, resolve, update, or revoke the identifier. The overwhelming majority of URIs today are based on DNS names or IP addresses that depend on centralized authorities for registration and ultimate control. DIDs can be created and managed without any such authority.
+
+
+2.  A URL whose control and associated metadata, including public keys, can be cryptographically verified. Authentication via DIDs and DID Documents leverage the same public/private key cryptography as distributed ledgers.
+
 
 ## The Role of Human-Friendly Identifiers
 
