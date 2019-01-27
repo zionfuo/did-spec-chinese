@@ -156,6 +156,50 @@ Following is an example of a DID Document that describes the DID above. This exa
 ```
 # Terminology
 
+This document attempts to communicate the concepts outlined in the Decentralized Identifier space by using specialized terms to discuss specific concepts. This terminology is included below and linked to throughout the document to aid the reader:
+
+Decentralized Identifier (DID)
+
+A globally unique identifier that does not require a centralized registration authority because it is registered with distributed ledger technology or other form of decentralized network. The generic format of a DID is defined in this specification. A specific DID scheme is defined in a DID method specification.
+
+Decentralized Identity Management
+
+Identity Management based on decentralized identifiers. Decentralized Identity Management extends the identifier creation authority beyond the traditional roots of trust required by X.500 directory services, the Domain Name System, and most national ID systems.
+
+DID Document
+
+A set of data that describes a DID, including mechanisms, such as public keys and pseudonymous biometrics, that an entity can use to authenticate itself as the DID. A DID Document may also contain other attributes or claims describing the entity. These documents are graph-based data structures that are typically expressed using [JSON-LD], but may be expressed using other compatible graph-based data formats.
+
+DID Fragment
+
+The portion of a DID reference that follows the first hash sign character ("#"). A DID fragment uses the same syntax as a URI fragment. See section 5.5. Note that a DID fragment MUST immediately follow a DID. If a DID reference includes a DID path followed by a fragment, that fragment is NOT a DID fragment.
+DID Method
+
+A definition of how a specific DID scheme can be implemented on a specific distributed ledger or network, including the precise method(s) by which DIDs and DID Documents can be read, written, and revoked.
+
+DID Path
+
+The portion of a DID reference that follows the first forward slash character. A DID path uses the identical syntax as a URI path. See section 5.4. Note that if a DID path is followed by a fragment, that fragment is NOT a DID fragment.
+
+DID Reference
+
+A DID plus an optional DID path or DID fragment.
+
+DID Scheme
+
+The formal syntax of a Decentralized Identifier. The generic DID scheme is defined in this specification. A DID method specification defines a specific DID scheme that works with a specific DID method.
+
+Distributed Ledger (aka DLT)
+
+A distributed database in which the various nodes use a consensus protocol to maintain a shared ledger in which each transaction is cryptographically signed and chained to the previous transaction
+
+Service Endpoint
+
+A network address at which a service operates on behalf of an entity. Examples of specific services include discovery services, social networks, file storage services, and verifiable claim repository services. Service endpoints may also be provided by a generalized data interchange protocol such as Extensible Data Interchange.
+Extensible Data Interchange (aka XDI)
+
+A semantic graph format and semantic data interchange protocol defined by the OASIS XDI Technical Committee.
+
 ## Base Specifications
 
 This specification is dependent on a number of base specifications. The dependencies and their purpose are listed below.
