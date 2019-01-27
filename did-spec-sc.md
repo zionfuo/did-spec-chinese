@@ -55,7 +55,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 此规范的第一个目的是定义通用的DID方案和一组关于DID的通用操作集, 这些操作可以用于任何能够支持DID的分布式分类帐或网络。这个规范的第二个目的是定义一个DID方法规范的一致性要求 —— 一个单独的规范, 用于定义特定的DID方案和特定的分布式账本或网络的特定DID记录操作集。
 
-从概念上讲，该规范与DID方法规范的关系类似于IETF通用URI规范（RFC3986）和特定的URI方案（iana-uri-scheme（如http:https:RFC7230中指定的方案）的关系。它也类似于IETF的通用URN规范（URN）和特定的URN名称空间定义（例如RFC4122中定义的UUID URN名称空间）的关系。不同之处在于，除了定义一个特定的DID方案之外，一个DID方法规范还必须指定读取、写入和撤销所写的网络上的记录的方法。
+从概念上讲，该规范与DID方法规范的关系类似于IETF通用URI规范（RFC3986）和特定的URI方案[IANA-URI-SCHEMES](https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml)（如http:和https:是RFC7230中指定的方案）的关系。它也类似于IETF的通用URN规范（URN）和特定的URN名称空间定义（例如RFC4122中定义的UUID URN名称空间）的关系。不同之处在于，除了定义一个特定的DID方案之外，一个DID方法规范还必须指定读取、写入和撤销所写的网络上的记录的方法。
 
 有关DID方法及其相应规范的列表, 请参阅[DID方法注册表（DID-METHOD-REGISTRY）](https://w3c-ccg.github.io/did-method-registry/)。
 
@@ -770,11 +770,11 @@ Although DIDs and DID Documents form a foundation for decentralized identity, th
 
 This version of the specification relies on JSON-LD and the RDF graph model for expressing a DID Document. Future versions of this specification MAY specify other semantic graph formats for a DID Document, such as JXD (JSON XDI Data), a serialization format for the XDI graph model as defined by the [OASIS XDI Core 1.0 specification](http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml).
 
-# Registries
+# A. 注册
 
-There are multiple registries that define DID Methods and extensions to this specification. These registries are:
+有多个注册中心定义了DID规范的方法和扩展。这些注册中心是：
 
-| Registry | Purpose |
+| 注册 | 作用 |
 | --- | --- |
 | [DID Method Registry](https://w3c-ccg.github.io/did-method-registry/) | Defines all known DID Methods and contains links to their specifications. |
 | [Linked Data Cryptography Suite Registry](https://w3c-ccg.github.io/ld-cryptosuite-registry/) | Defines all known Linked Data Cryptography Suites and Key Formats. |
