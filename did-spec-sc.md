@@ -117,49 +117,56 @@ did:example:123456789abcdefghi
 
 **分散标识符 (DID)**
 
-A globally unique identifier that does not require a centralized registration authority because it is registered with distributed ledger technology or other form of decentralized network. The generic format of a DID is defined in this specification. A specific DID scheme is defined in a DID method specification.
+DID是一种全局唯一标识符, 不需要集中的注册权限, 它是使用分布式分类帐技术或其他形式的分散网络注册的。在此规范之后定义了DID的通用格式，又在DID方法规范中定义了特定的DID方案。
 
-一个全局唯一标识符，它不需要集中式注册中心，因为它是在分布式记账技术或其他形式的分散网络中注册的。在该规范中定义了DID的通用格式。一个特定的DID方案是在一个方法规范中定义的。
-
-Decentralized Identity Management
+**分散身份管理（Decentralized Identity Management）**
 
 Identity Management based on decentralized identifiers. Decentralized Identity Management extends the identifier creation authority beyond the traditional roots of trust required by X.500 directory services, the Domain Name System, and most national ID systems.
 
-DID Document
+基于分散标识的身份管理。分散的身份管理扩展了标识符创建权限，超出了x.500目录服务、域名系统和大多数国家ID系统所需的传统信任的基础。
+
+**DID文档（DID Document）**
 
 A set of data that describes a DID, including mechanisms, such as public keys and pseudonymous biometrics, that an entity can use to authenticate itself as the DID. A DID Document may also contain other attributes or claims describing the entity. These documents are graph-based data structures that are typically expressed using [JSON-LD], but may be expressed using other compatible graph-based data formats.
 
-DID Fragment
+一组描述A的数据，包括一些机制，如公钥和匿名生物识别，一个实体可以用来验证自己的身份。一个DID文档也可能包含描述该实体的其他属性或声明。这些文档是基于图形的数据结构，通常使用JSON-LD表达，但是可以使用其他兼容的基于图形的数据格式表示。
+
+**DID片段（DID Fragment）**
 
 The portion of a DID reference that follows the first hash sign character ("#"). A DID fragment uses the same syntax as a URI fragment. See section 5.5. Note that a DID fragment MUST immediately follow a DID. If a DID reference includes a DID path followed by a fragment, that fragment is NOT a DID fragment.
-DID Method
+
+a的一部分引用了第一个哈希符号字符（“”）。一个DID片段使用与URI片段相同的语法。参见第5.5节。注意，一个片段必须立即跟随一个DID。如果一个DID引用包含一个DID路径后面跟着一个片段，那么这个片段不是一个DID片段。
+
+**DID方法（DID Method）**
 
 A definition of how a specific DID scheme can be implemented on a specific distributed ledger or network, including the precise method(s) by which DIDs and DID Documents can be read, written, and revoked.
 
-DID Path
+一个特定的计划如何在一个特定的分布式账本或网络上实现，包括精确的方法，通过它，DIDs和文档可以被读取、写入和撤销。定义如何在特定的分布式分类帐或网络上实现特定的DID方案，包括可以读取，写入和撤销DID和DID文档的精确方法。
+
+**DID路径（DID Path）**
 
 The portion of a DID reference that follows the first forward slash character. A DID path uses the identical syntax as a URI path. See section 5.4. Note that if a DID path is followed by a fragment, that fragment is NOT a DID fragment.
 
-DID Reference
+**DID参考（DID Reference）**
 
 A DID plus an optional DID path or DID fragment.
 
-DID Scheme
+**DID方案（DID Scheme）**
 
 The formal syntax of a Decentralized Identifier. The generic DID scheme is defined in this specification. A DID method specification defines a specific DID scheme that works with a specific DID method.
 
-Distributed Ledger (aka DLT)
+**分布式账本（Distributed Ledger (DLT)）**
 
 A distributed database in which the various nodes use a consensus protocol to maintain a shared ledger in which each transaction is cryptographically signed and chained to the previous transaction
 
-Service Endpoint
+**服务端点（Service Endpoint）**
 
 A network address at which a service operates on behalf of an entity. Examples of specific services include discovery services, social networks, file storage services, and verifiable claim repository services. Service endpoints may also be provided by a generalized data interchange protocol such as Extensible Data Interchange.
 Extensible Data Interchange (aka XDI)
 
 A semantic graph format and semantic data interchange protocol defined by the OASIS XDI Technical Committee.
 
-## Base Specifications
+## 2.1 Base Specifications
 
 This specification is dependent on a number of base specifications. The dependencies and their purpose are listed below.
 
