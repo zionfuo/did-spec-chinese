@@ -3,7 +3,7 @@
 
 # 摘要
 
-分散标识符（DIDs）是一种新的标识符，他用于可验证的“自主（self-sovereign）”数字身份。DIDs完全处于已完成的主体的控制之下，独立于任何集中式注册中心、身份提供者或证书颁发机构。DIDs是将一个已完成的主题与该主题的可靠交互联系起来的url。DIDs决心做文档——简单的文档描述如何使用特定的文档。每个文档都包含至少三样东西：加密材料、身份验证套件和服务端点。与身份验证套件相结合的加密材料提供了一组机制来进行身份验证（例如，公钥、匿名生物特征协议等）。服务端点支持与DID主题的可信交互。
+分散标识符（DID）是一种新的标识符，他用于可验证的“自主（self-sovereign）”数字身份。DIDs完全处于已完成的主体的控制之下，独立于任何集中式注册中心、身份提供者或证书颁发机构。DID是将一个已完成的主题与该主题的可靠交互联系起来的url。DID决心做文档——简单的文档描述如何使用特定的文档。每个文档都包含至少三样东西：加密材料、身份验证套件和服务端点。与身份验证套件相结合的加密材料提供了一组机制来进行身份验证（例如，公钥、匿名生物特征协议等）。服务端点支持与DID主题的可信交互。
 
 该文档指定了所有DIDs支持的公共数据模型、格式和操作。
 
@@ -17,17 +17,17 @@
 
 分布式记账技术（DLT）的出现，有时被称为区块链技术，提供了完全去中心化的身份管理的机会。在一个分散的身份系统中，实体可以自由地使用任何共享的信任根。全球分布式的分类账（或提供类似功能的分散式P2P网络）提供了一种管理信任根的方法，既没有中央集权，也没有单点故障。同时，DLTs和分散式身份识别系统使任何实体能够在任意数量的分布式独立的信任基础上创建和管理自己的标识符。
 
-这些实体由分散的标识符（DIDs）标识。他们可以通过证明进行认证（例如，数字签名、保护隐私的生物识别协议等）。DIDs指的是文档。一个DID文档包含一组用于与实体交互的服务端点。按照[隐私设计](https://en.wikipedia.org/wiki/Privacy_by_design)原则，每个实体可能有必要的数量，以尊重实体想要的身份、角色和上下文的分离。
+这些实体由分散的标识符（DID）标识。他们可以通过证明进行认证（例如，数字签名、保护隐私的生物识别协议等）。DID指的是文档。一个DID文档包含一组用于与实体交互的服务端点。按照[隐私设计](https://en.wikipedia.org/wiki/Privacy_by_design)原则，每个实体可能有必要的数量，以尊重实体想要的身份、角色和上下文的分离。
 
 要使用特定的分布式账本或网络，需要在单独的方法规范中定义一个DID方法。一个DID方法指定了一个规则的集合，用于在特定的分类帐或网络上注册、解析、更新和撤销。
 
-这种设计消除了对标识符集中注册的依赖，以及用于密钥管理的集中证书权威——层次化[PKI（公钥基础设施）](https://en.wikipedia.org/wiki/Public_key_infrastructure)中的标准模式。由于DIDs驻留在一个分布式账本上，每个实体都可以作为它自己的根权威——一个被称为[DPKI（分布式公钥基础设施）](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust/blob/master/final-documents/dpki.pdf)的体系结构。
+这种设计消除了对标识符集中注册的依赖，以及用于密钥管理的集中证书权威——层次化[PKI（公钥基础设施）](https://en.wikipedia.org/wiki/Public_key_infrastructure)中的标准模式。由于DID驻留在一个分布式账本上，每个实体都可以作为它自己的根权威一个被称为[DPKI（分布式公钥基础设施）](https://github.com/WebOfTrustInfo/rebooting-the-web-of-trust/blob/master/final-documents/dpki.pdf)的体系结构。
 
 注意，也可以为注册在联邦或集中的身份管理系统中的标识符开发方法。对于他们来说，所有类型的标识符系统都可能增加对DIDs的支持。这在集中式、联邦和分散的标识符之间创建了一个互操作性的桥梁。
 
-### 1.1.1 URIs、URLs和URNs
+### 1.1.1 URI、URL和URN
 
-DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9月[澄清](https://www.w3.org/TR/uri-clarification/)了URI(Uniform Resource Identifier 统一资源标识符)、URL(Uniform Resource Locator 统一资源定位器)和URN(Uniform Resource Name 统一资源名称)等术语。这三类标识符的主要区别是:
+DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9月[澄清](https://www.w3.org/TR/uri-clarification/)了URI(Uniform Resource Identifier 统一资源标识符)、URL(Uniform Resource Locator 统一资源定位器)和URN(Uniform Resource Name 统一资源名称)等术语。这三类标识符的主要区别是:
 
 1. **URI**是识别抽象或物理资源的任何类型标识符（例如，URN、URL等）的术语。它可能是资源，也可能不是资源。
 2. **URL**是任何类型的URI的术语，可以解析或取消引用，以定位Web上资源的表示（例如，Web页面、文件、图像等）。
@@ -41,11 +41,15 @@ DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年
 
 1. 今天绝大多数的URL都基于DNS名称或IP地址，这些DNS名称或IP地址最终依赖于集中管理的注册和控制。而新类型的URL不应该要求集中的权限来注册、解析、更新或撤销标识符。可以在没有任何此类权限的情况下创建和管理DID。
 
-2.  可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥/私钥加密。
+2.  可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥（public key）/私钥（private key）加密。
 
 ## 1.1.3 人性化标识符的作用
 
 DIDs achieve global uniqueness without the need for a central registration authority. This comes, however, at the cost of human memorability. The algorithms capable of generating globally unique identifiers automatically produce random strings of characters that have no human meaning. This demonstrates the axiom about identifiers known as [Zooko's Triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle): "human-meaningful, decentralized, secure—pick any two".
+
+did 实现全局唯一性, 而不需要中央登记机构。然而, 这是以人类记忆为代价的。能够生成全局唯一标识符的算法会自动生成没有人类意义的随机字符串。这就说明了关于被称为 zooko 三角的标识符的公理: "人类有意义的、分散的、安全的--选择任意两个"。
+
+在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）——选择任意两个”。
 
 There are of course many use cases where it is desirable to discover a DID when starting from a human-friendly identifier—a natural language name, a domain name, or a conventional address for a DID controller such as a mobile telephone number, email address, Twitter handle, or blog URL. However, the problem of mapping human-friendly identifiers to DIDs (and doing so in a way that can be verified and trusted) is out-of-scope for this specification.
 
