@@ -35,7 +35,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 推荐阅读：[分清 URI、URL 和 URN | IBM](https://www.ibm.com/developerworks/cn/xml/x-urlni.html)
 
-## 1.1.2 DID缘起
+### 1.1.2 DID缘起
 
 对分散标识符的需求不断增长，这对一种新类型的URL产生了两个具体的要求，这些新类型的URL仍然适合Web架构，并且有一些额外的要求，而这些要求是更传统的URL（例如基于HTTP的URL）所不具备的:
 
@@ -43,7 +43,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 2.  可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥（public key）/私钥（private key）加密。
 
-## 1.1.3 人性化标识符的作用
+### 1.1.3 人性化标识符的作用
 
 在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）——选择任意两个”。
 
@@ -51,15 +51,17 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 这个问题的解决方案（还有很多）应该在引用该规范的单独规范中定义。强烈建议这样的规范仔细考虑：（a）基于针对欺骗真实实体目标用户的人类友好标识符的大量安全攻击，以及（b）使用具有人类友好标识符的隐私后果，特别是如果它们是全局唯一的。
 
-## Purpose of This Specification
+## 1.1.4 规范缘由
 
 The first purpose of this specification is to define the generic DID scheme and a generic set of operations on DIDs that can be implemented for any distributed ledger or network capable of supporting DIDs. The second purpose of this specification is to define the conformance requirements for a DID method specification—a separate specification that defines a specific DID scheme and specific set of DID record operations for a specific distributed ledger or network.
+
+该规范的第一个目的是定义通用的DID方案和一个通用的DIDs上的操作集，这些操作可以用于任何分布式的分类帐或支持DIDs的网络。这个规范的第二个目的是定义一个DID方法规范的一致性需求——一个单独的规范，它定义了一个特定的DID方案和特定的分布式账本或网络的特定的记录操作集。
 
 Conceptually, the relationship of this specification and a DID method specification is similar to the relationship of the IETF generic URI specification ([[RFC3986]]) and a specific URI scheme ([[IANA-URI-SCHEMES]] (such as the http: and https: schemes specified in [[RFC7230]]). It is also similar to the relationship of the IETF generic URN specification ([[URN]]) and a specific URN namespace definition (such as the UUID URN namespace defined in [[RFC4122]]). The difference is that a DID method specification, in addition to defining a specific DID scheme, must also specify the methods for reading, writing, and revoking DID records on the network for which it is written.
 
 For a list of DID Methods and their corresponding specifications, see the DID Method Registry [[DID-METHOD-REGISTRY]].
 
-# 1.2 设计目标
+## 1.2 设计目标
 
 本节总结了DID体系结构的设计目标和原则。
 
@@ -76,17 +78,17 @@ For a list of DID Methods and their corresponding specifications, see the DID Me
 | Simplicity | To meet these design goals, DID architecture should be (to paraphrase Albert Einstein) "assimple as possible but no simpler". |
 | Extensibility | When possible, DID architecture should enable extensibility provided it does not greatly hinder interoperability, portability, or simplicity. |
 
-# Simple Examples
+## 1.3 简单例子
 
-This is a simple example of a DID:
+这是DID的一个简单示例：
 
 ```
 did:example:123456789abcdefghi
 ```
 
-## Self-Managed DID Document
+### 1.3.1 自我管理的DID文档
 
-Following is an example of a DID Document that describes the DID above. This example assumes that the entity that controls the private keys for this identifier is authoritative for the DID Document.
+以下是描述上述DID的DID文档的示例。此示例假定控制此标识符的私钥的实体对DID文档具有权威性。
 
 ```
 {
@@ -111,11 +113,9 @@ Following is an example of a DID Document that describes the DID above. This exa
 ```
 # 2 术语
 
-This document attempts to communicate the concepts outlined in the Decentralized Identifier space by using specialized terms to discuss specific concepts. This terminology is included below and linked to throughout the document to aid the reader:
+本文档尝试通过使用专门的术语来讨论特定概念，来传达分散标识符空间中概述的概念。此术语包含在下面，并链接到整个文档中，以帮助读者：
 
-这个文档试图通过使用专门的术语来讨论特定概念，来传达分散的标识符空间中概述的概念。这个术语包含在下面，并链接到整个文档中，以帮助读者：
-
-**分散标识符 Decentralized Identifier (DID)**
+**分散标识符 (DID)**
 
 A globally unique identifier that does not require a centralized registration authority because it is registered with distributed ledger technology or other form of decentralized network. The generic format of a DID is defined in this specification. A specific DID scheme is defined in a DID method specification.
 
