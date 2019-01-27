@@ -45,10 +45,6 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 ## 1.1.3 人性化标识符的作用
 
-DIDs achieve global uniqueness without the need for a central registration authority. This comes, however, at the cost of human memorability. The algorithms capable of generating globally unique identifiers automatically produce random strings of characters that have no human meaning. This demonstrates the axiom about identifiers known as [Zooko's Triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle): "human-meaningful, decentralized, secure—pick any two".
-
-did 实现全局唯一性, 而不需要中央登记机构。然而, 这是以人类记忆为代价的。能够生成全局唯一标识符的算法会自动生成没有人类意义的随机字符串。这就说明了关于被称为 zooko 三角的标识符的公理: "人类有意义的、分散的、安全的--选择任意两个"。
-
 在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）——选择任意两个”。
 
 There are of course many use cases where it is desirable to discover a DID when starting from a human-friendly identifier—a natural language name, a domain name, or a conventional address for a DID controller such as a mobile telephone number, email address, Twitter handle, or blog URL. However, the problem of mapping human-friendly identifiers to DIDs (and doing so in a way that can be verified and trusted) is out-of-scope for this specification.
