@@ -39,21 +39,11 @@ DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年
 
 对分散标识符的需求不断增长，这对一种新类型的URL产生了两个具体的要求，这些新类型的URL仍然适合Web架构，并且有一些额外的要求，而这些要求是更传统的URL（例如基于HTTP的URL）所不具备的:
 
-1.  The new type of URL SHOULD NOT require a centralized authority to register, resolve, update, or revoke the identifier. The overwhelming majority of URIs today are based on DNS names or IP addresses that depend on centralized authorities for registration and ultimate control. DIDs can be created and managed without any such authority.
-2.  A URL whose control and associated metadata, including public keys, can be cryptographically verified. Authentication via DIDs and DID Documents leverage the same public/private key cryptography as distributed ledgers.
+1. 今天绝大多数的URL都基于DNS名称或IP地址，这些DNS名称或IP地址最终依赖于集中管理的注册和控制。而新类型的URL不应该要求集中的权限来注册、解析、更新或撤销标识符。可以在没有任何此类权限的情况下创建和管理DID。
 
-新类型的URL不应该要求集中的权限来注册、解析、更新或撤销标识符。今天绝大多数的uri都基于DNS名称或IP地址，这些IP地址依赖于集中管理的注册和最终控制。可以在没有任何此类权限的情况下创建和管理DIDs。
+2.  可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥/私钥加密。
 
-一个URL，它的控制和相关的元数据，包括公共密钥，可以被加密验证。通过DIDs进行身份验证，并使文档利用与分布式账本相同的公钥/私钥加密。
-
-
-1.  The new type of URL SHOULD NOT require a centralized authority to register, resolve, update, or revoke the identifier. The overwhelming majority of URIs today are based on DNS names or IP addresses that depend on centralized authorities for registration and ultimate control. DIDs can be created and managed without any such authority.
-
-
-2.  A URL whose control and associated metadata, including public keys, can be cryptographically verified. Authentication via DIDs and DID Documents leverage the same public/private key cryptography as distributed ledgers.
-
-
-## The Role of Human-Friendly Identifiers
+## 1.1.3 人性化标识符的作用
 
 DIDs achieve global uniqueness without the need for a central registration authority. This comes, however, at the cost of human memorability. The algorithms capable of generating globally unique identifiers automatically produce random strings of characters that have no human meaning. This demonstrates the axiom about identifiers known as [Zooko's Triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle): "human-meaningful, decentralized, secure—pick any two".
 
@@ -123,13 +113,17 @@ Following is an example of a DID Document that describes the DID above. This exa
   }]
 }
 ```
-# Terminology
+# 2 术语
 
 This document attempts to communicate the concepts outlined in the Decentralized Identifier space by using specialized terms to discuss specific concepts. This terminology is included below and linked to throughout the document to aid the reader:
 
-Decentralized Identifier (DID)
+这个文档试图通过使用专门的术语来讨论特定概念，来传达分散的标识符空间中概述的概念。这个术语包含在下面，并链接到整个文档中，以帮助读者：
+
+**分散标识符 Decentralized Identifier (DID)**
 
 A globally unique identifier that does not require a centralized registration authority because it is registered with distributed ledger technology or other form of decentralized network. The generic format of a DID is defined in this specification. A specific DID scheme is defined in a DID method specification.
+
+一个全局唯一标识符，它不需要集中式注册中心，因为它是在分布式记账技术或其他形式的分散网络中注册的。在该规范中定义了DID的通用格式。一个特定的DID方案是在一个方法规范中定义的。
 
 Decentralized Identity Management
 
