@@ -45,7 +45,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 ### 1.1.3 人性化标识符的作用
 
-在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）——选择任意两个”。
+在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）—— 选择任意两个”。
 
 当然，有很多用例，当从一个人友好的标识符（一个自然的语言名称、一个域名，或者DID 控制器的常规地址，或者一个移动电话号码、电子邮件地址、Twitter自定义链接或博客URL）的常规地址开始时，就可以发现一个这样的例子。然而，将人类友好的标识符映射到DID（并以一种可以被验证和信任的方式进行映射）的问题超出了这个规范的范围。
 
@@ -53,13 +53,11 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 ## 1.1.4 规范缘由
 
-The first purpose of this specification is to define the generic DID scheme and a generic set of operations on DIDs that can be implemented for any distributed ledger or network capable of supporting DIDs. The second purpose of this specification is to define the conformance requirements for a DID method specification—a separate specification that defines a specific DID scheme and specific set of DID record operations for a specific distributed ledger or network.
+此规范的第一个目的是定义通用的DID方案和一组关于DID的通用操作集, 这些操作可以用于任何能够支持DID的分布式分类帐或网络。这个规范的第二个目的是定义一个DID方法规范的一致性要求 —— 一个单独的规范, 用于定义特定的DID方案和特定的分布式账本或网络的特定DID记录操作集。
 
-该规范的第一个目的是定义通用的DID方案和一个通用的DIDs上的操作集，这些操作可以用于任何分布式的分类帐或支持DIDs的网络。这个规范的第二个目的是定义一个DID方法规范的一致性需求——一个单独的规范，它定义了一个特定的DID方案和特定的分布式账本或网络的特定的记录操作集。
+从概念上讲，该规范与DID方法规范的关系类似于IETF通用URI规范（RFC3986）和特定的URI方案（iana-uri-scheme（如http:https:RFC7230中指定的方案）的关系。它也类似于IETF的通用URN规范（URN）和特定的URN名称空间定义（例如RFC4122中定义的UUID URN名称空间）的关系。不同之处在于，除了定义一个特定的DID方案之外，一个DID方法规范还必须指定读取、写入和撤销所写的网络上的记录的方法。
 
-Conceptually, the relationship of this specification and a DID method specification is similar to the relationship of the IETF generic URI specification ([[RFC3986]]) and a specific URI scheme ([[IANA-URI-SCHEMES]] (such as the http: and https: schemes specified in [[RFC7230]]). It is also similar to the relationship of the IETF generic URN specification ([[URN]]) and a specific URN namespace definition (such as the UUID URN namespace defined in [[RFC4122]]). The difference is that a DID method specification, in addition to defining a specific DID scheme, must also specify the methods for reading, writing, and revoking DID records on the network for which it is written.
-
-For a list of DID Methods and their corresponding specifications, see the DID Method Registry [[DID-METHOD-REGISTRY]].
+有关DID方法及其相应规范的列表, 请参阅[DID方法注册表](https://w3c-ccg.github.io/did-method-registry/)。
 
 ## 1.2 设计目标
 
@@ -120,8 +118,6 @@ did:example:123456789abcdefghi
 DID是一种全局唯一标识符, 不需要集中的注册权限, 它是使用分布式分类帐技术或其他形式的分散网络注册的。在此规范之后定义了DID的通用格式，又在DID方法规范中定义了特定的DID方案。
 
 **分散身份管理（Decentralized Identity Management）**
-
-Identity Management based on decentralized identifiers. Decentralized Identity Management extends the identifier creation authority beyond the traditional roots of trust required by X.500 directory services, the Domain Name System, and most national ID systems.
 
 基于分散标识的身份管理。分散的身份管理扩展了标识符创建权限，超出了x.500目录服务、域名系统和大多数国家ID系统所需的传统信任的基础。
 
