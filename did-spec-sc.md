@@ -47,19 +47,9 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 在不需要中央注册机构的情况下，DID实现了全局的唯一性。然而，这是以人类记忆能力为代价的。能够生成全局唯一标识符的算法会自动生成没有人类含义的随机字符串。这就证明了[帕斯卡三角形（Zooko's Triangle）也称之为“Zooko's不可能三角”](https://en.wikipedia.org/wiki/Zooko%27s_triangle)的标识符公理：“有意义性（它使用人可记忆字符），去中心化（不需要一个中心授权机构），安全性（保证名称独特且唯一）——选择任意两个”。
 
-There are of course many use cases where it is desirable to discover a DID when starting from a human-friendly identifier—a natural language name, a domain name, or a conventional address for a DID controller such as a mobile telephone number, email address, Twitter handle, or blog URL. However, the problem of mapping human-friendly identifiers to DIDs (and doing so in a way that can be verified and trusted) is out-of-scope for this specification.
+当然，有很多用例，当从一个人友好的标识符（一个自然的语言名称、一个域名，或者DID 控制器的常规地址，或者一个移动电话号码、电子邮件地址、Twitter自定义链接或博客URL）的常规地址开始时，就可以发现一个这样的例子。然而，将人类友好的标识符映射到DID（并以一种可以被验证和信任的方式进行映射）的问题超出了这个规范的范围。
 
-当然，有很多用例，当从一个人友好的标识符 —— 一个自然的语言名称、一个域名，或者一个移动电话号码、电子邮件地址、Twitter句柄或博客URL——的常规地址开始时，就可以发现一个这样的例子。然而，将人类友好的标识符映射到DIDs（并以一种可以被验证和信任的方式进行映射）的问题是该规范的不适用范围。
-
-
-Solutions to this problem (and there are many) should be defined in separate specifications that reference this specification. It is strongly recommended that such specifications carefully consider: (a) the numerous security attacks based on deceiving users about the true human-friendly identifier for a target entity, and (b) the privacy consequences of using human-friendly identifiers that are inherently correlatable, especially if they are globally unique.
-
-这个问题的解决方案（还有很多）应该在引用该规范的单独规范中定义。强烈建议这样的规范仔细考虑：（a）基于欺骗用户的针对目标实体的真正的人类友好标识符的大量安全攻击，以及（b）使用具有人类友好的标识符的隐私后果，特别是如果它们是全局唯一的。
-
-
-
-
-
+这个问题的解决方案（还有很多）应该在引用该规范的单独规范中定义。强烈建议这样的规范仔细考虑：（a）基于针对欺骗真实实体目标用户的人类友好标识符的大量安全攻击，以及（b）使用具有人类友好标识符的隐私后果，特别是如果它们是全局唯一的。
 
 ## Purpose of This Specification
 
@@ -69,15 +59,11 @@ Conceptually, the relationship of this specification and a DID method specificat
 
 For a list of DID Methods and their corresponding specifications, see the DID Method Registry [[DID-METHOD-REGISTRY]].
 
-# Design Goals
+# 1.2 设计目标
 
-This section summarizes the design goals and principles of DID architecture.
+本节总结了DID体系结构的设计目标和原则。
 
-
-Design Goals
-This section summarizes the design goals and principles of DID architecture.
-
-| Goal | Description |
+| 目标 | 描述 |
 | --- | --- |
 | Decentralization | DID architecture should eliminate the requirement for centralized authorities or single points of failure in identifier management, including the registration of globally unique identifiers, public verification keys, service endpoints, and other metadata. |
 | Self‑Sovereignty | DID architecture should give entities, both human and non-human, the power to directly own and control their digital identifiers without the need to rely on external authorities. |
