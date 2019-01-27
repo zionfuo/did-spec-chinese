@@ -7,9 +7,9 @@
 
 该文档指定了所有DIDs支持的公共数据模型、格式和操作。
 
-# 1 Introduction
+# 1 介绍
 
-## 1.1 Overview
+## 1.1 概况
 
 传统的[身份管理](https://en.wikipedia.org/wiki/Identity_management)系统是基于集中的权威，例如公司[目录服务](https://en.wikipedia.org/wiki/Directory_service)、[证书颁发机构](https://en.wikipedia.org/wiki/Certificate_authority)或[域名注册中心](https://en.wikipedia.org/wiki/Domain_name_registry)。从密码信任验证的角度来看，每一个中央集权的权威都是其自身的[信任根源](https://en.wikipedia.org/wiki/Trust_anchor)。要使跨这些系统的身份管理工作需要实现[联合身份管理](https://en.wikipedia.org/wiki/Federated_identity)。
 
@@ -23,13 +23,17 @@
 
 注意，也可以为注册在联邦或集中的身份管理系统中的标识符开发方法。对于他们来说，所有类型的标识符系统都可能增加对DIDs的支持。这在集中式、联邦和分散的标识符之间创建了一个互操作性的桥梁。
 
-## URIs, URLs, and URNs
+### 1.1.1 URIs、URLs和URNs
 
 DIDs have a foundation in URLs, so it's important to understand how the W3C [clarified](https://www.w3.org/TR/uri-clarification/) the terms [[URI]] (Uniform Resource Identifier), [[URL]] (Uniform Resource Locator), and [[URN]] (Uniform Resource Name) in September 2001\. The key difference between these three categories of identifiers are:
 
-1.  [[URI]] is the term for any type of identifier (e.g., URN, URL, etc.) that identifies an abstract or physical resource. It may or may not be resolveable to a resource.
-2.  [[URL]] is the term for any type of URI that can be resolved or de-referenced to locate a representation of a resource on the Web (e.g., Web page, file, image, etc.).
-3.  [[URN]] is the term for a specific type of URI intended to persistently identify a resource, i.e., an identifier that will never change no matter how often the resource moves, changes labels, changes controllers, etc. URNs are intended to last forever.
+DIDs是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9月[澄清](https://www.w3.org/TR/uri-clarification/)了URI(统一资源标识符)、URL(统一资源定位器)和URN(统一资源名称)等术语。这三类标识符的主要区别是:
+
+1. **URI**是识别抽象或物理资源的任何类型标识符（例如，URN、URL等）的术语。它可能是资源，也可能不是资源。
+2. **URL**是任何类型的URI的术语，可以解析或取消引用，以定位Web上资源的表示（例如，Web页面、文件、图像等）。
+3. **URN**是用于持久标识资源的特定类型URI的术语，也就是说，无论资源如何移动、更改标签、更改控制器等，都不会改变标识符。URN会永远保存
+
+推荐阅读：[分清 URI、URL 和 URN | IBM](https://www.ibm.com/developerworks/cn/xml/x-urlni.html)
 
 ## Motivations for DIDs
 

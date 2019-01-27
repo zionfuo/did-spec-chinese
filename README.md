@@ -1,6 +1,6 @@
 # Decentralized Identifiers (DIDs) v0.11 中文版
 
-中文 | [English](https://github.com/zionfuo/did-spec-chinese/blob/master/did-spec.md)
+[中文](https://github.com/zionfuo/did-spec-chinese/blob/master/did-spec-sc.md) | [English](https://github.com/zionfuo/did-spec-chinese/blob/master/did-spec.md)
 
 ## Latest editor's draft:
 
