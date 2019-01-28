@@ -41,7 +41,7 @@ DID是以URL为基础，所以了解什么是URL就非常重要，W3C在2001年9
 
 1. 今天绝大多数的URL都基于DNS名称或IP地址，这些DNS名称或IP地址最终依赖于集中管理的注册和控制。而新类型的URL不应该要求集中的权限来注册、解析、更新或撤销标识符。可以在没有任何此类权限的情况下创建和管理DID。
 
-2.  可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥（public key）/私钥（private key）加密。
+2. 可以通过加密方式验证其控件和相关元数据(包括公钥) 的URL。通过DIDs和DID文档进行身份验证与分布式账簿使用相同的公钥（public key）/私钥（private key）加密。
 
 ### 1.1.3 人性化标识符的作用
 
@@ -848,70 +848,70 @@ This version of the specification relies on JSON-LD and the RDF graph model for 
 
 ## C.1 参考文献
 
-**[DID-METHOD-REGISTRY]**
+**DID-METHOD-REGISTRY**
 
 The Decentralized Identifier Method Registry. Manu Sporny; Drummond Reed. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-ccg.github.io/did-method-registry/
 
-**[IANA-URI-SCHEMES]**
+**IANA-URI-SCHEMES**
 
 Uniform Resource Identifier (URI) Schemes. IANA. URL: https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
 
-**[JSON]**
+**JSON**
 
 The application/json Media Type for JavaScript Object Notation (JSON). D. Crockford. IETF. July 2006. Informational. URL: https://tools.ietf.org/html/rfc4627
 
-**[JSON-LD]**
+**JSON-LD**
 
 JSON-LD 1.0. Manu Sporny; Gregg Kellogg; Markus Lanthaler. W3C. 16 January 2014. W3C Recommendation. URL: https://www.w3.org/TR/json-ld/
 
-**[LD-PROOFS]**
+**LD-PROOFS**
 
 Linked Data Proofs. Manu Sporny; Dave Longley. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-dvcg.github.io/ld-proofs/
 
-**[LD-SIGNATURES]**
+**LD-SIGNATURES**
 
 Linked Data Signatures. Manu Sporny; Dave Longley. Digital Verification Community Group. CG-DRAFT. URL: https://w3c-dvcg.github.io/ld-signatures/
 
-**[LINKED-DATA]**
+**LINKED-DATA**
 
 Linked Data Design Issues. Tim Berners-Lee. W3C. 27 July 2006. W3C-Internal Document. URL: https://www.w3.org/DesignIssues/LinkedData.html
 
-**[RFC3552]**
+**RFC3552**
 
 Guidelines for Writing RFC Text on Security Considerations. E. Rescorla; B. Korver. IETF. July 2003. Best Current Practice. URL: https://tools.ietf.org/html/rfc3552
 
-**[RFC4122]**
+**RFC4122**
 
 A Universally Unique IDentifier (UUID) URN Namespace. P. Leach; M. Mealling; R. Salz. IETF. July 2005. Proposed Standard. URL: https://tools.ietf.org/html/rfc4122
 
-**[RFC5234]**
+**RFC5234**
 
 Augmented BNF for Syntax Specifications: ABNF. D. Crocker, Ed.; P. Overell. IETF. January 2008. Internet Standard. URL: https://tools.ietf.org/html/rfc5234
 
-**[RFC6973]**
+**RFC6973**
 
 Privacy Considerations for Internet Protocols. A. Cooper; H. Tschofenig; B. Aboba; J. Peterson; J. Morris; M. Hansen; R. Smith. IETF. July 2013. Informational. URL: https://tools.ietf.org/html/rfc6973
 
-**[RFC7159]**
+**RFC7159**
 
 The JavaScript Object Notation (JSON) Data Interchange Format. T. Bray, Ed.. IETF. March 2014. Proposed Standard. URL: https://tools.ietf.org/html/rfc7159
 
-**[RFC7230]**
+**RFC7230**
 
 Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing. R. Fielding, Ed.; J. Reschke, Ed.. IETF. June 2014. Proposed Standard. URL: https://tools.ietf.org/html/rfc7230
 
-**[URI]**
+**URI**
 
 Uniform Resource Identifier (URI): Generic Syntax. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January 2005. Internet Standard. URL: https://tools.ietf.org/html/rfc3986
 
-**[URL]**
+**URL**
 
 URL Standard. Anne van Kesteren. WHATWG. Living Standard. URL: https://url.spec.whatwg.org/
 
-**[URN]**
+**URN**
 
 URN Syntax. R. Moats. IETF. May 1997. Proposed Standard. URL: https://tools.ietf.org/html/rfc2141
 
-**[XMLSCHEMA11-2]**
+**XMLSCHEMA11-2**
 
-W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al. W3C. 5 April 2012. W3C Recommendation. URL: https://www.w3.org/TR/xmlschema11-2/
+W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al. W3C. 5 April 2012. W3C Recommendation. URL: [https://www.w3.org/TR/xmlschema11-2/](https://www.w3.org/TR/xmlschema11-2/)
