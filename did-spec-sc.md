@@ -176,10 +176,11 @@ The JSON-LD specification enables the layering of data semantics on top of JSON 
 
 DID类似于UUID，除了：（a）像URL一样，它可以被解析或解引用到描述该实体的标准资源（参见第4部分文档），（b）与URL不同，DID文档通常包含加密材料，该加密材料允许对与DID相关联的实体进行认证。
 
-## 3.1 The Generic DID Scheme
-The generic DID scheme is a URI scheme conformant with [[RFC3986]]. It consists of a DID followed by an optional path and/or fragment. The term DID refers only to the identifier conforming to the did rule in the ABNF below; when used alone, it does not include a path or fragment. A DID that may optionally include a path and/or fragment is called a DID reference.
+## 3.1 通用DID方案
 
-Following is the ABNF definition using the syntax in [[RFC5234]] (which defines ALPHA as upper or lowercase A-Z).
+泛型方案是一个符合RFC3986的URI方案。它由一个可选路径（和/或）片段组成。这个术语只指符合下面ABNF中的规则规则的标识符;单独使用时，它不包含路径或片段。一个可以选择包含路径和/或片段的方法称为DID引用。
+
+以下是使用RFC5234（将ALPHA定义为大写或小写A-Z）语法的ABNF定义。
 
 ```
 did-reference      = did [ "/" did-path ] [ "#" did-fragment ]
