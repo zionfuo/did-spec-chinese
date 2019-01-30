@@ -170,13 +170,13 @@ The JSON specification provides the base data format that this specification use
 [[JSON-LD]]
 The JSON-LD specification enables the layering of data semantics on top of JSON data.
 
-# 3. 分散标识符 (DID)
+# 3 分散标识符 (DID)
 
 全局唯一分散标识符的概念并不是什么新概念；[全局唯一标识符(Universally Unique Identifiers,UUID)](https://en.wikipedia.org/wiki/Universally_unique_identifier)最初是在20世纪80年代开发的，后来成为开放软件基金会 [分布式计算环境（Distributed Computing Environment）](https://en.wikipedia.org/wiki/Distributed_Computing_Environment)的标准特性。UUID在没有集中注册中心服务的情况下实现全局唯一性，它使用了一种算法，该算法产生128位（128-bit）的值，并且具有足够的熵，以至于发生碰撞的几率非常小。UUID在RFC4122中被正式指定为统一资源名称(URN)的特定类型。
 
 DID类似于UUID，除了：（a）像URL一样，它可以被解析或解引用到描述该实体的标准资源（参见第4部分文档），（b）与URL不同，DID文档通常包含加密材料，该加密材料允许对与DID相关联的实体进行认证。
 
-## The Generic DID Scheme
+## 3.1 The Generic DID Scheme
 The generic DID scheme is a URI scheme conformant with [[RFC3986]]. It consists of a DID followed by an optional path and/or fragment. The term DID refers only to the identifier conforming to the did rule in the ABNF below; when used alone, it does not include a path or fragment. A DID that may optionally include a path and/or fragment is called a DID reference.
 
 Following is the ABNF definition using the syntax in [[RFC5234]] (which defines ALPHA as upper or lowercase A-Z).
@@ -194,7 +194,7 @@ idchar             = ALPHA / DIGIT / "." / "-"
 
 See Sections [](#paths)and [](#fragments)for the ABNF rules defining DID paths and fragments.
 
-## Specific DID Method Schemes
+## 3.2 Specific DID Method Schemes
 
 A DID method specification MUST define exactly one specific DID scheme identified by exactly one method name (the method rule in Section [](#the-generic-did-scheme)). Since DIDs are intended for decentralized identity infrastructure, it is NOT RECOMMENDED to establish a registry of unique DID method names. Rather the uniqueness of DID method names should be established via human consensus, i.e., a specific DID scheme MUST use a method name that is unique among all DID method names known to the specification authors at the time of publication.
 
@@ -206,19 +206,19 @@ The DID method specification for the specific DID scheme MUST specify how to gen
 
 If needed, a specific DID scheme MAY define multiple specific specific-idstring formats. It is RECOMMENDED that a specific DID scheme define as few specific-idstring formats as possible.
 
-## Paths
+## 3.3 Paths
 
 A generic DID path (the did-path rule in Section [](#the-generic-did-scheme)) is identical to a URI path and MUST conform to the ABNF of the path-rootless ABNF rule in [[RFC3986]]. A DID path SHOULD be used to address resources available via a DID service endpoint. See Section [](#service-endpoints).
 
 A specific DID scheme MAY specify ABNF rules for DID paths that are more restrictive than the generic rules in this section.
 
-## Fragments
+## 3.4 Fragments
 
 A generic DID fragment (the did-fragment rule in Section [](#the-generic-did-scheme)) is identical to a URI fragment and MUST conform to the ABNF of the fragment ABNF rule in [[RFC3986]]. A DID fragment MUST be used only as a method-independent pointer into the DID Document to identify a unique key description or other DID Document component. To resolve this pointer, the complete DID reference including the DID fragment MUST be used as the value of the id key for the target JSON object.
 
 A specific DID scheme MAY specify ABNF rules for DID fragments that are more restrictive than the generic rules in this section.
 
-## Normalization
+## 3.5 Normalization
 
 For the broadest interoperability, DID normalization should be as simple and universal as possible. Therefore:
 
@@ -226,7 +226,7 @@ For the broadest interoperability, DID normalization should be as simple and uni
 2.  The method name MUST be lowercase.
 3.  Case sensitivity and normalization of the value of the specific-idstring rule in Section [](#the-generic-did-scheme)MUST be defined by the governing DID method specification.
 
-## Persistence
+## 3.6 Persistence
 
 A DID MUST be persistent and immutable, i.e., bound to an entity once and never changed (forever). Ideally a DID would be a completely abstract decentralized identifier (like a UUID) that could be bound to multiple underlying distributed ledgers or networks over time, thus maintaining its persistence independent of any particular ledger or network. However registering the same identifier on multiple ledgers or networks introduces extremely hard entityship and [start-of-authority](https://en.wikipedia.org/wiki/List_of_DNS_record_types%23SOA) (SOA) problems. It also greatly increases implementation complexity for developers.
 
@@ -234,7 +234,7 @@ To avoid these issues, it is RECOMMENDED that DID method specifications only pro
 
 NOTE: Although not included in this version, future versions of this specification may support a DID Document equivID property to establish verifiable equivalence relations between DID records representing the same entity on multiple ledgers or networks. Such equivalence relations can produce the practical equivalent of a single persistent abstract DID. See Future Work (Section [](#future-work)).
 
-# DID Documents
+# 4 DID Documents
 
 If a DID is the index key in a key-value pair, then the DID Document is the value to which the index key points. The combination of a DID and its associated DID Document forms the root record for a decentralized identifier.
 
@@ -242,7 +242,7 @@ A DID Document MUST be a single JSON object conforming to [[RFC7159]]. For purpo
 
 The following sections define the properties of this JSON object, including whether these properties are required or optional.
 
-## Context
+## 4.1 Context
 
 JSON objects in JSON-LD format must include a JSON-LD context statement. The rules for this statement are:
 
@@ -260,7 +260,7 @@ Example (using an example URL):
 
 DID method specifications MAY define their own JSON-LD contexts. However it is NOT RECOMMENDED to define a new context unless necessary to properly implement the method. Method-specific contexts MUST NOT override the terms defined in the generic DID context.
 
-## DID Subject
+## 4.2 DID Subject
 
 The DID subject is the identifier that the DID Document is about, i.e., it is the DID described by DID Document. The rules for a DID subject are:
 
@@ -280,7 +280,7 @@ Example:
 
 >DID Method specifications MAY create intermediate representations of a DID Document that do not contain the `id` key, such as when a DID Resolver is performing resolution. However, the fully resolved DID Document MUST contain a valid `id` property.
 
-## Public Keys
+## 4.3 Public Keys
 
 Public keys are used for digital signatures, encryption and other cryptographic operations, which in turn are the basis for purposes such as authentication (see Section [](#authentication)) or establishing secure communication with service endpoints (see Section [](#service-endpoints)). In addition, public keys may play a role in authorization mechanisms of DID CRUD operations (see Section [](#did-operations)); This may be defined by DID Method specifications.
 
@@ -362,7 +362,7 @@ The algorithm to use when processing a `publicKey` property in a DID Document
 
 >Caching and expiration of the keys in a DID Document is entirely the responsibility of DID resolvers and other clients. See Section [](#did-resolvers).
 
-## Authentication
+## 4.4 Authentication
 
 Authentication is the mechanism by which an entity can cryptographically prove that they are associated with a DID and DID Description. See Section [](#binding-of-identity). Note that Authentication is separate from Authorization because an entity may wish to enable other entities to update the DID Document (for example, to assist with key recovery as discussed in Section [](#key-revocation-and-recovery)) without enabling them to prove control (and thus be able to impersonate the entity).
 
@@ -393,7 +393,7 @@ Example:
 }
 ```
 
-## Authorization and Delegation
+## 4.5 Authorization and Delegation
 
 Authorization is the mechanism by which an entity states how one may perform operations on behalf of the entity. Delegation is the mechanism that an entity may use to authorize other entities to act on its behalf. Note that Authorization is separate from Authentication as explained in Section [](#authentication). This is particularly important for key recovery in the case of key loss, when the entity no longer has access to their keys, or key compromise, where the controller’s trusted third parties need to override malicious activity by an attacker. See Section [](#security-considerations).
 
@@ -404,7 +404,7 @@ There are at least two suggested methods for implementing Authorization, Delegat
 1.  A ledger could implement a coarse grained `guardian` pattern by re-using the same cryptography suite pattern used by the `authentication` property, or more preferably
 2.  A ledger could implement a Capabilities-based approach and provide more fine-grained control of authorization, delegation, and guardianship.
 
-## Service Endpoints
+## 4.6 Service Endpoints
 
 In addition to publication of authentication and authorization mechanisms, the other primary purpose of a DID Document is to enable discovery of service endpoints for the entity. A service endpoint may represent any type of service the entity wishes to advertise, including decentralized identity management services for further discovery, authentication, authorization, or interaction. The rules for service endpoints are:
 
@@ -461,7 +461,7 @@ Example:
 
 See Sections [](#specific-did-method-schemes)and [](#authentication)for further security considerations regarding authentication service endpoints.
 
-## Created (Optional)
+## 4.7 Created (Optional)
 
 Standard metadata for identifier records includes a timestamp of the original creation. The rules for including a creation timestamp are:
 
@@ -479,7 +479,7 @@ Example:
 }
 ```
 
-## Updated (Optional)
+## 4.8 Updated (Optional)
 
 Standard metadata for identifier records includes a timestamp of the most recent change. The rules for including an updated timestamp are:
 
@@ -495,7 +495,7 @@ Example:
 }
 ```
 
-## Proof (Optional)
+## 4.9 Proof (Optional)
 
 A `proof` on a DID Document is cryptographic proof of the integrity of the DID Document according to either:
 
@@ -522,7 +522,7 @@ Example:
 ```
 
 
-## Extensibility
+## 4.10 Extensibility
 
 One of the goals of the Decentralized Identifiers Data Model is to enable permissionless innovation. This requires that the data model is extensible in a number of different ways:
 
@@ -598,7 +598,7 @@ Implementations MUST produce an error when an extension JSON-LD Context override
 
 Developers are urged to ensure that extension JSON-LD Contexts are highly available. Implementations that cannot fetch a context will produce an error. Strategies for ensuring that extension JSON-LD Contexts are always available include using content-addressed URLs for contexts, bundling context documents with implementations, or enabling aggressive caching of contexts.
 
-# DID Operations
+# 5 DID Operations
 
 To enable the full functionality of DIDs and DID Documents on a particular distributed ledger or network (called the target system), a DID method specification MUST specify how each of the following[CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations is performed by a client. Each operation MUST be specified to the level of detail necessary to build and test interoperable client implementations with the target system. Note that, due to the specified contents of DID Documents, these operations can effectively be used to perform all the operations required of a CKMS (cryptographic key management system), e.g.:
 
@@ -608,23 +608,23 @@ To enable the full functionality of DIDs and DID Documents on a particular distr
 *   Key recovery
 *   Key expiration
 
-## Create
+## 5.1 Create
 
 The DID method specification MUST specify how a client creates a DID record—the combination of a DID and its associated DID Document—on the target system, including all cryptographic operations necessary to establish proof of control.
 
-## Read/Verify
+## 5.2 Read/Verify
 
 The DID method specification MUST specify how a client uses a DID to request a DID Document from the target system, including how the client can verify the authenticity of the response.
 
-## Update
+## 5.3 Update
 
 The DID method specification MUST specify how a client can update a DID record on the target system, including all cryptographic operations necessary to establish proof of control.
 
-## Delete/Revoke
+## 5.4 Delete/Revoke
 
 Although a core feature of distributed ledgers is immutability, the DID method specification MUST specify how a client can revoke a DID record on the target system, including all cryptographic operations necessary to establish proof of revocation.
 
-# DID Resolvers
+# 6 DID Resolvers
 
 A DID resolver is a software component with an API designed to accept requests for DID lookups and execute the corresponding DID method to retrieve the authoritative DID Document. To be conformant with this specification, a DID resolver:
 
@@ -633,11 +633,11 @@ A DID resolver is a software component with an API designed to accept requests f
 3.  SHOULD offer the service of verifying the integrity of the DID Document if it is signed.
 4.  MAY offer the service of returning requested properties of the DID Document.
 
-# Security Considerations
+# 7 Security Considerations
 
 NOTE TO IMPLEMENTERS: During the Implementer’s Draft stage, this section focuses on security topics that should be important in early implementations. The editors are also seeking feedback on threats and threat mitigations that should be reflected in this section or elsewhere in the spec. As the root identifier records for decentralized identifiers, DIDs and DID Documents are a vital component of decentralized identity management. They are also the foundational building blocks of DPKI (decentralized public key infrastructure) as an augmentation to conventional X.509 certificates. As such, DIDs are designed to operate under the general Internet threat model used by many IETF standards. We assume uncompromised endpoints, but allow messages to be read or corrupted on the network. Protecting against an attack when a system is compromised requires external key-signing hardware. See also section [](#key-revocation-and-recovery)regarding key revocation and recovery. For their part, the DLTs hosting DIDs and DID Documents have special security properties for preventing active attacks. Their design uses public/private key cryptography to allow operation on passively monitored networks without risking compromise of private keys. This is what makes DID architecture and decentralized identity possible.
 
-## Requirements of DID Method Specifications
+## 7.1 Requirements of DID Method Specifications
 
 1.  DID method specifications MUST include their own Security Considerations sections.
 2.  This section MUST consider all the requirements mentioned in section 5 of [[RFC3552]] (page 27) for the DID operations defined in the specification. In particular:
@@ -653,9 +653,9 @@ At least the following forms of attack MUST be considered: eavesdropping, replay
 7.  DID methods MUST discuss the policy mechanism by which DIDs are proven to be uniquely assigned. A DID fits the functional definition of a URN as defined in [[RFC2141]]—a persistent identifier that is assigned once to a resource and never reassigned. In a security context this is particularly important since a DID may be used to identify a specific party subject to a specific set of authorization rights.
 8.  DID methods that introduce new authentication service endpoint types (Section [](#service-endpoints)) SHOULD consider the security requirements of the supported authentication protocol.
 
-## Binding of Identity
+## 7.2 Binding of Identity
 
-### Proving Control of a DID and DID Document
+### 7.2.1 Proving Control of a DID and DID Document
 
 Signatures are one method to allow DID Documents to be cryptographically verifiable.
 
@@ -675,26 +675,26 @@ Signatures on DID Documents are optional. DID Method Specs SHOULD explain and sp
 
 It is RECOMMENDED to combine timestamps with signatures.
 
-### Proving Control of a Public Key
+### 7.2.2 Proving Control of a Public Key
 
 There are two methods for proving control of the private key corresponding to a public key description in the DID Document: static and dynamic. The static method is to sign the DID Document with the private key. This proves control of the private key at a time no later than the DID Document was registered. If the DID Document is not signed, control of a public key described in the DID Document may still be proven dynamically as follows:
 
 1.  Send a challenge message containing a public key description from the DID Document and a nonce to an appropriate service endpoint described in the DID Document.
 2.  Verify the signature of the response message against the public key description.
 
-### Authentication and Verifiable Claims
+### 7.2.3 Authentication and Verifiable Claims
 
 A DID and DID Document do not inherently carry any [PII](https://en.wikipedia.org/wiki/Personally_identifiable_information) (personally-identifiable information). The process of binding a DID to a real-world entity such as a person or company, for example with credentials whose subject is that DID, is out of scope for this specification. However this topic is the focus of the [verifiable claims](https://w3c.github.io/vctf/) standardization work at the W3C (where the term "DID" originated).
 
-## Authentication Service Endpoints
+## 7.3 Authentication Service Endpoints
 
 If a DID Document publishes a service endpoint intended for authentication or authorization of an entity (section [](#service-endpoints)), it is the responsibility of the service endpoint provider, entity, and/or relying party to comply with the requirements of the authentication protocol(s) supported at that service endpoint.
 
-## Non-Repudiation
+## 7.4 Non-Repudiation
 
 Non-repudiation of DIDs and DID Document updates is supported under the assumption that: (1) the entity is monitoring for unauthorized updates (see Section [](#notification-of-did-document-changes)) and (2) the entity has had adequate opportunity to revoke malicious updates according to the DID method's access control mechanism (section [](#authentication)). This capability is further supported if timestamps are included (sections [](#created-optional)and [](#updated-optional)) and the target DLT system supports timestamps.
 
-## Notification of DID Document Changes
+## 7.5 Notification of DID Document Changes
 
 One mitigation against unauthorized changes to a DID Document is monitoring and actively notifying the entity when there are changes. This is analogous to helping prevent account takeover on conventional username/password accounts by sending password reset notifications to the email addresses on file. In the case of a DID, where there is no intermediary registrar or account provider to generate the notification, the following approaches are RECOMMENDED:
 
@@ -702,66 +702,66 @@ One mitigation against unauthorized changes to a DID Document is monitoring and 
 2.  Self-monitoring. An entity may employ its own local or online agent to periodically monitor for changes to a DID Document.
 3.  Third-party monitoring. An entity may rely on a third party monitoring service, however this introduces another vector of attack.
 
-## Key and Signature Expiration
+## 7.6 Key and Signature Expiration
 
 In a decentralized identifier architecture, there are no centralized authorities to enforce key or signature expiration policies. Therefore DID resolvers and other client applications SHOULD validate that keys were not expired at the time they were used. Since some use cases may have legitimate reasons why already-expired keys can be extended, a key expiration SHOULD NOT prevent any further use of the key, and implementations of a resolver SHOULD be compatible with such extension behavior.
 
-## Key Revocation and Recovery
+## 7.7 Key Revocation and Recovery
 
 Section [](#did-operations)specifies the DID operations that must be supported by a DID method specification, including revocation of a DID Document by replacing it with an updated DID Document. In general, checking for key revocation on DLT-based methods is expected to be handled in a manner similar to checking the balance of a cryptocurrency account on a distributed ledger: if the balance is empty, the entire DID is revoked. DID method specifications SHOULD enable support for a quorum of trusted parties to enable key recovery. Some of the facilities to do so are suggested in section 6.5, Authorization. Note that not all DID method specifications will recognize control from DIDs registered using other DID methods and they MAY restrict third-party control to DIDs that use the same method. Access control and key recovery in a DID method specification MAY also include a time lock feature to protect against key compromise by maintaining a second track of control for recovery. Further specification of this type of control is a matter for future work (see section [](#time-locks-and-did-document-recovery)).
 
-# Privacy Considerations
+# 8 Privacy Considerations
 
 It is critically important to apply the principles of Privacy by Design to all aspects of decentralized identifier architecture, because DIDs and DID Documents are—by design—administered directly by their controllers. There is no registrar, hosting company, or other intermediate service provider to recommend or apply additional privacy safeguards. The authors of this specification have applied all seven Privacy by Design principles throughout its development. For example, privacy in this specification is preventative not remedial, and privacy is an embedded default. Furthermore, decentralized identifier architecture by itself embodies principle #7, "Respect for user privacy—keep it user-centric." This section lists additional privacy considerations that implementers, delegates, and entities should bear in mind.
 
-## Requirements of DID Method Specifications
+## 8.1 Requirements of DID Method Specifications
 
 1.  DID method specifications MUST include their own Privacy Considerations sections, if only to point to the general privacy considerations in this section.
 2.  The DID method privacy section MUST discuss any subsection of section 5 of [[RFC6973]] that could apply in a method-specific manner. The subsections to consider are: surveillance, stored data compromise, unsolicited traffic, misattribution, correlation, identification, secondary use, disclosure, exclusion.
 
-## Keep Personally-Identifiable Information (PII) Off-Ledger
+## 8.2 Keep Personally-Identifiable Information (PII) Off-Ledger
 
 If a DID method specification is written for a public ledger or network where all DIDs and DID Documents will be publicly available, it is STRONGLY RECOMMENDED that DID Documents contain no PII. All PII should be kept off-ledger behind service endpoints under the control of the entity. With this privacy architecture, PII may be exchanged on a private, peer-to-peer basis using communications channels identified and secured by key descriptions in DID records. This also enables entities and relying parties to implement the [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) [right to be forgotten](https://en.wikipedia.org/wiki/Right_to_be_forgotten), as no PII will be written to an immutable ledger.
 
-## DID Correlation Risks and Pseudonymous DIDs
+## 8.3 DID Correlation Risks and Pseudonymous DIDs
 
 Like any type of globally unique identifier, DIDs may be used for correlation. DID controllers can mitigate this privacy risk by using pairwise unique DIDs, i.e., by sharing a different private DID for every relationship. In effect, each DID acts as a pseudonym. A pseudonymous DID need only be shared with more than one party when the entity explicitly authorizes correlation between those parties. If pseudonymous DIDs are the default, then the only need for a public DID—a DID published openly or shared with a large number of parties—is when the entity explicitly desires public identification.
 
-## DID Document Correlation Risks
+## 8.4 DID Document Correlation Risks
 
 The anti-correlation protections of pseudonymous DIDs are easily defeated if the data in the corresponding DID Documents can be correlated. For example, using same public key descriptions or bespoke service endpoints in multiple DID Documents can provide as much correlation information as using the same DID. Therefore the DID Document for a pseudonymous DID SHOULD also use pairwise-unique public keys. It might seem natural to also use pairwise-unique service endpoints in the DID Document for a pseudonymous DID. However, unique endpoints allow all traffic between to DIDs to be isolated perfectly into unique buckets, where timing correlation and similar analysis is easy. Therefore, a better strategy for endpoint privacy may be to share an endpoint among thousands or millions of DIDs owned by many different entities.
 
-## Herd Privacy
+## 8.5 Herd Privacy
 
 When an entity is indistinguishable from others in the herd, privacy is available. When the act of engaging privately with another party is by itself a recognizable flag, privacy is greatly diminished. DIDs and DID methods SHOULD work to improve herd privacy, particularly for those who legitimately need it most. Choose technologies and human interfaces that default to preserving anonymity and pseudonymity. In order to reduce [digital fingerprints](https://en.wikipedia.org/wiki/Device_fingerprint), share common settings across client implementations, keep negotiated options to a minimum on wire protocols, use encrypted transport layers, and pad messages to standard lengths.
 
-# Future Work
+# 9 Future Work
 
-## Upper Limits on DID Character Length
+## 9.1 Upper Limits on DID Character Length
 
 The current specification does not take a position on maximum length of a DID. The maximum interoperable URL length is currently about 2K characters. QR codes can handle about 4K characters. Clients using DIDs will be responsible for storing many DIDs, and some methods would be able to externalize some of their costs onto clients by relying on more complicated signature schemes or by adding state into DIDs intended for temporary use. A future version of this specification should set reasonable limits on DID character length to minimize externalities.
 
-## Equivalence
+## 9.2 Equivalence
 
 Including an equivalence property, such as equivID, in DID Documents whose value is an array of DIDs would allow entities to assert two or more DIDs that represent the same entity. This capability has numerous uses, including supporting migration between ledgers and providing forward compatibility of existing DIDs to future DLTs. In theory, equivalent DIDs should have the same identifier rights, allowing [verifiable claims](https://w3c.github.io/vctf/) made against one DID to apply to equivalent DIDs. Equivalence was not included in the current specification due to the complexity of verifying equivalence across different DLTs and different DID methods, and also of aggregating properties of equivalent DID Documents. However equivalence should be supported in a future version of this specification.
 
-## Timestamps
+## 9.3 Timestamps
 
 Verifiable timestamps have significant utility for identifier records. This is a good fit for DLTs, since most offer some type of timestamp mechanism. Despite some transactional cost, they are the most censorship-resistant transaction ordering systems in the world, so they are nearly ideal for DID Document timestamping. In some cases a DLT's immediate timing is approximate, however their sense of ["median time past" (see Bitcoin BIP 113)](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki%23Abstract) can be precisely defined. A generic DID Document timestamping mechanism could would work across all DLTs and might operate via a mechanism including either individual transactions or transaction batches. The generic mechanism was deemed out of scope for this version, although it may be included in a future version of this specification.
 
-## Time Locks and DID Document Recovery
+## 9.4 Time Locks and DID Document Recovery
 
 Section [](#key-revocation-and-recovery)mentions one possible clever use of time locks to recover control of a DID after a key compromise. The technique relies on an ability to override the most recent update to a DID Document with Authorization applied by an earlier version of the DID Document in order to defeat the attacker. This protection depends on adding a [time lock (see Bitcoin BIP 65)](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki%23Abstract) to protect part of the transaction chain, enabling a Authorization block to be used to recover control. We plan to add support for time locks in a future version of this specification.
 
-## Smart Signatures
+## 9.5 Smart Signatures
 
 Not all DLTs can support the Authorization logic in section 6.5\. Therefore, in this version of the specification, all Authorization logic must be delegated to DID method specifications. A potential future solution is a [Smart Signature](http://www.weboftrust.info/downloads/smart-signatures.pdf) specification that specifies the code any conformant DLT may implement to process signature control logic.
 
-## Verifiable Claims
+## 9.6 Verifiable Claims
 
 Although DIDs and DID Documents form a foundation for decentralized identity, they are only the first step in describing an entity. The rest of the descriptive power comes through collecting and selectively using [verifiable claims](https://w3c.github.io/vctf/). Future versions of the specification will describe in more detail how DIDs and DID Document can be integrated with—and help enable—the verifiable claims ecosystem.
 
-## Alternate Serializations and Graph Models
+## 9.7 Alternate Serializations and Graph Models
 
 This version of the specification relies on JSON-LD and the RDF graph model for expressing a DID Document. Future versions of this specification MAY specify other semantic graph formats for a DID Document, such as JXD (JSON XDI Data), a serialization format for the XDI graph model as defined by the [OASIS XDI Core 1.0 specification](http://docs.oasis-open.org/xdi/xdi-core/v1.0/csd01/xdi-core-v1.0-csd01.xml).
 
